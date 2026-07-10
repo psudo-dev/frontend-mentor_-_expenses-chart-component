@@ -1,0 +1,13 @@
+{
+  "name": "frontend-mentor_-_expenses-chart-component",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
