@@ -72,9 +72,7 @@ ol {
 	*::before,
 	*::after {
 		transition-duration: 0s !important;
-
 		animation-duration: 0s !important;
-
 		scroll-behavior: auto !important;
 	}
 }
@@ -98,7 +96,7 @@ ol {
 	max-width: 500px;
 	align-content: center;
 	padding-inline: 1rem;
-	gap: 1rem;
+	gap: clamp(1rem, 0.1111rem + 4.4444vw, 1.5rem);
 }
 
 /* CARD HEADER */
@@ -108,12 +106,14 @@ ol {
 	justify-content: space-between;
 	align-items: center;
 	background: var(--red-500);
-	padding: 1.25rem;
-	border-radius: 0.75rem;
+	padding: clamp(1.25rem, 0.3611rem + 4.4444vw, 1.75rem);
+	border-radius: clamp(0.75rem, 0.3056rem + 2.2222vw, 1rem);
 }
 
 .card-header__text {
-	display: grid;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	color: var(--white);
 }
 
@@ -124,8 +124,9 @@ ol {
 }
 
 .card-header__balance {
-	font-size: 1.5rem;
+	font-size: clamp(1.5rem, 0.6111rem + 4.4444vw, 2rem);
 	font-weight: 700;
+	transform: translateY(clamp(0rem, -0.4444rem + 2.2222vw, 0.25rem));
 }
 
 .card-header__icon {
@@ -151,15 +152,15 @@ ol {
 
 .card-content__wrapper {
 	display: grid;
-	gap: 1.25rem;
+	gap: clamp(1.25rem, 0.8056rem + 2.2222vw, 1.5rem);
 	background: var(--white);
 	border-radius: 0.75rem;
-	padding-inline: 1.25rem;
-	padding-block: 1.5rem;
+	padding-inline: clamp(1.25rem, -0.0833rem + 6.6667vw, 2rem);
+	padding-block: clamp(1.5rem, 0.6111rem + 4.4444vw, 2rem);
 }
 
 .card-content__title {
-	font-size: 1.5rem;
+	font-size: clamp(1.25rem, 0.1389rem + 5.5556vw, 1.875rem);
 }
 
 .graphic__wrapper {
@@ -167,8 +168,8 @@ ol {
 	grid-template-columns: repeat(7, 1fr);
 	align-items: end;
 	justify-items: center;
-	gap: 0.75rem;
-	height: 200px;
+	gap: clamp(0.75rem, 0.3056rem + 2.2222vw, 1rem);
+	height: 215px;
 	max-height: 250px;
 	font-size: 0.75rem;
 }
@@ -177,26 +178,25 @@ ol {
 	display: flex;
 	flex-direction: column-reverse;
 	gap: 0.75rem;
-	height: 85%;
 	width: 100%;
 	position: relative;
 }
 
 .graphic__column:hover::before {
-	content: attr(data-value);
+	content: attr(data-amount);
 	position: absolute;
 	padding: 0.5rem;
 	top: -3rem;
-	left: -0.5rem;
+	left: 50%;
+	transform: translateX(-50%);
 	font-size: 1rem;
 	font-weight: 700;
 	color: var(--white);
 	background: var(--brown-950);
 	border-radius: 0.25rem;
-}
-
-#wednesday {
-	height: 50%;
+	z-index: 2;
+	opacity: 1;
+	transition: all 0.2s ease;
 }
 
 .graphic__column--day {
@@ -204,15 +204,22 @@ ol {
 	align-self: center;
 }
 
-.graphic__column--value {
+.graphic__column--amount {
 	height: 100%;
 	background: var(--red-500);
 	border-radius: 0.25rem;
 }
 
-.graphic__column--value.active {
+.graphic__column--amount:hover {
+	opacity: 0.8;
+	transition: all 0.2s ease;
+}
+
+.active {
 	background: var(--blue-300);
 }
+
+/* SEPARATOR */
 
 .card-content__separator {
 	height: 3px;
@@ -221,19 +228,23 @@ ol {
 	background: var(--red-100);
 }
 
+/* MONTH SUMMARY */
+
 .summary__wrapper {
 	display: flex;
 	justify-content: space-between;
 }
 
-.this-month__wrapper {
+.current-month__wrapper {
 	display: grid;
 	align-content: end;
 }
 
-.this-month__value {
-	font-size: 2rem;
+.current-month__expenses {
+	font-size: clamp(2rem, 0.2222rem + 8.8889vw, 3rem);
+	line-height: 1.25;
 	font-weight: 700;
+	transform: translateY(clamp(0rem, -0.8889rem + 4.4444vw, 0.5rem));
 }
 
 .last-month__wrapper {
@@ -241,15 +252,20 @@ ol {
 	align-content: end;
 }
 
-.last-month__value {
+.last-month__expenses {
 	font-weight: 700;
 	font-size: 1rem;
+	letter-spacing: -0.02em;
 }
 
-.this-month__title,
+.current-month__title,
 .last-month__title {
 	color: var(--brown-400);
 	font-weight: 400;
 	font-size: 1rem;
 	letter-spacing: -0.02em;
+}
+
+.this-month__title {
+	transform: translateY(clamp(0rem, -0.8889rem + 4.4444vw, 0.5rem));
 }
