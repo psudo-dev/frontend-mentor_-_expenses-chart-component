@@ -45,7 +45,7 @@ Rather than hardcoding those values, I created two additional JSON files (`balan
 
 This meant fetching from three endpoints instead of one, and calculating the month-over-month percentage change client-side from real data rather than displaying a static string.
 
-### DocumentFragment, <template>, and cloneNode()
+### `DocumentFragment`, `<template>`, and `cloneNode()`
 
 My first working version generated each chart column by setting an inline `style.height` on existing `<li>` elements inside a `forEach` loop. It worked, but after digging into optimization with the help of AI, I learned this approach causes unnecessary reflows: each style mutation on an element already in the live DOM can trigger the browser to recalculate layout, and doing that seven times in a row (once per column) is wasteful compared to batching the work.
 
