@@ -1,6 +1,8 @@
 :root {
 	--red-500: hsl(10, 79%, 65%);
+	--red-500-hover: hsla(10, 79%, 65%, 0.8);
 	--blue-300: hsl(186, 34%, 65%);
+	--blue-300-hover: hsla(186, 34%, 65%, 0.8);
 	--brown-950: hsl(25, 47%, 15%);
 	--brown-400: hsl(28, 10%, 53%);
 	--red-100: hsl(26, 66%, 93%);
@@ -89,11 +91,11 @@ ol {
 	border-width: 0;
 }
 
-.card-container {
+.card {
 	height: 97vh;
 	display: grid;
 	margin: auto;
-	max-width: 500px;
+	max-width: 31.25rem;
 	align-content: center;
 	padding-inline: 1rem;
 	gap: clamp(1rem, 0.1111rem + 4.4444vw, 1.5rem);
@@ -101,7 +103,7 @@ ol {
 
 /* CARD HEADER */
 
-.card-header__wrapper {
+.card-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -150,11 +152,11 @@ ol {
 
 /* CARD CONTENT */
 
-.card-content__wrapper {
+.card-content {
 	display: grid;
 	gap: clamp(1.25rem, 0.8056rem + 2.2222vw, 1.5rem);
 	background: var(--white);
-	border-radius: 0.75rem;
+	border-radius: clamp(0.75rem, 0.3056rem + 2.2222vw, 1rem);
 	padding-inline: clamp(1.25rem, -0.0833rem + 6.6667vw, 2rem);
 	padding-block: clamp(1.5rem, 0.6111rem + 4.4444vw, 2rem);
 }
@@ -163,15 +165,13 @@ ol {
 	font-size: clamp(1.25rem, 0.1389rem + 5.5556vw, 1.875rem);
 }
 
-.graphic__wrapper {
+.card-content__graphic {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	align-items: end;
 	justify-items: center;
 	gap: clamp(0.75rem, 0.3056rem + 2.2222vw, 1rem);
-	height: 215px;
-	max-height: 250px;
-	font-size: 0.75rem;
+	height: 13.45rem;
 }
 
 .graphic__column {
@@ -179,10 +179,27 @@ ol {
 	flex-direction: column-reverse;
 	gap: 0.75rem;
 	width: 100%;
-	position: relative;
+	height: 100%;
 }
 
-.graphic__column:hover::before {
+.graphic__day {
+	font-size: 0.75rem;
+	color: var(--brown-400);
+	align-self: center;
+}
+
+.graphic__amount {
+	background: var(--red-500);
+	border-radius: 0.25rem;
+	position: relative;
+	transition: all 0.2s ease;
+}
+
+.graphic__amount:hover {
+	background: var(--red-500-hover);
+}
+
+.graphic__amount:hover::before {
 	content: attr(data-amount);
 	position: absolute;
 	padding: 0.5rem;
@@ -196,27 +213,14 @@ ol {
 	border-radius: 0.25rem;
 	z-index: 2;
 	opacity: 1;
-	transition: all 0.2s ease;
 }
 
-.graphic__column--day {
-	color: var(--brown-400);
-	align-self: center;
-}
-
-.graphic__column--amount {
-	height: 100%;
-	background: var(--red-500);
-	border-radius: 0.25rem;
-}
-
-.graphic__column--amount:hover {
-	opacity: 0.8;
-	transition: all 0.2s ease;
-}
-
-.active {
+.graphic__amount--active {
 	background: var(--blue-300);
+}
+
+.graphic__amount--active:hover {
+	background: var(--blue-300-hover);
 }
 
 /* SEPARATOR */
@@ -230,42 +234,40 @@ ol {
 
 /* MONTH SUMMARY */
 
-.summary__wrapper {
+.card-content__summary {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: clamp(0rem, -0.8889rem + 4.4444vw, 0.5rem);
 }
 
-.current-month__wrapper {
+.summary__current-month {
 	display: grid;
 	align-content: end;
 }
 
-.current-month__expenses {
+.summary__current-month-value {
 	font-size: clamp(2rem, 0.2222rem + 8.8889vw, 3rem);
-	line-height: 1.25;
+	line-height: 1.1;
 	font-weight: 700;
 	transform: translateY(clamp(0rem, -0.8889rem + 4.4444vw, 0.5rem));
 }
 
-.last-month__wrapper {
+.summary__last-month {
+	display: grid;
 	justify-items: right;
 	align-content: end;
 }
 
-.last-month__expenses {
+.summary__last-month-value {
 	font-weight: 700;
 	font-size: 1rem;
 	letter-spacing: -0.02em;
 }
 
-.current-month__title,
-.last-month__title {
+.summary__current-month-title,
+.summary__last-month-title {
 	color: var(--brown-400);
 	font-weight: 400;
 	font-size: 1rem;
 	letter-spacing: -0.02em;
-}
-
-.this-month__title {
-	transform: translateY(clamp(0rem, -0.8889rem + 4.4444vw, 0.5rem));
 }
