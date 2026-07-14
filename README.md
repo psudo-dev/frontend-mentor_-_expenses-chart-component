@@ -11,7 +11,7 @@ I'm back to studying programming and I've started with the good old HTML and CSS
 ### Live Demo
 
 - [Live Demo](https://gentle-graph-flow.netlify.app)
-- [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/interactive-rating-component-ULxFOLNZtt)
+- [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/expenses-chart-component-xOVA4K0rWH)
 
 ## Frontend Mentor
 
