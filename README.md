@@ -10,7 +10,7 @@ I'm back to studying programming and I've started with the good old HTML and CSS
 
 ### Live Demo
 
-- [Live Demo](https://gasket-bamboo-flair.netlify.app)
+- [Live Demo](https://gentle-graph-flow.netlify.app)
 - [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/interactive-rating-component-ULxFOLNZtt)
 
 ## Frontend Mentor
