@@ -29,56 +29,28 @@
 </head>
 
 <body>
-  <main class="card-container">
+  <main class="card">
     <h1 class="sr-only">Expenses Chart Component</h1>
-    <div class="card-header__wrapper">
+    <div class="card-header">
       <div class="card-header__text">
         <h2 class="card-header__title">My balance</h2>
         <p class="card-header__balance"></p>
       </div>
-      <span class="card-header__icon"></span>
+      <span class="card-header__icon" aria-hidden="true"></span>
     </div>
-    <div class="card-content__wrapper">
+    <div class="card-content">
       <h2 class="card-content__title">Spending - Last 7 days</h2>
-      <ul class="card-content__graphic graphic__wrapper">
-        <li class="graphic__column">
-          <p class="graphic__column--day">mon</p>
-          <span class="graphic__column--amount" id="monday"></span>
-        </li>
-        <li class="graphic__column" id="tuesday">
-          <p class="graphic__column--day">tue</p>
-          <span class="graphic__column--amount"></span>
-        </li>
-        <li class="graphic__column" id="wednesday">
-          <p class="graphic__column--day">wed</p>
-          <span class="graphic__column--amount"></span>
-        </li>
-        <li class="graphic__column" id="thursday">
-          <p class="graphic__column--day">thu</p>
-          <span class="graphic__column--amount"></span>
-        </li>
-        <li class="graphic__column" id="friday">
-          <p class="graphic__column--day">fri</p>
-          <span class="graphic__column--amount"></span>
-        </li>
-        <li class="graphic__column" id="saturday">
-          <p class="graphic__column--day">sat</p>
-          <span class="graphic__column--amount"></span>
-        </li>
-        <li class="graphic__column" id="sunday">
-          <p class="graphic__column--day">sun</p>
-          <span class="graphic__column--amount"></span>
-        </li>
+      <ul class="card-content__graphic">
       </ul>
-      <span class="card-content__separator"></span>
-      <div class="card-content__summary summary__wrapper">
-        <div class="summary__current-month current-month__wrapper">
-          <h3 class="current-month__title">Total this month</h3>
-          <p class="current-month__expenses"></p>
+      <span class="card-content__separator" aria-hidden="true"></span>
+      <div class="card-content__summary">
+        <div class="summary__current-month">
+          <h3 class="summary__current-month-title">Total this month</h3>
+          <p class="summary__current-month-value"></p>
         </div>
-        <div class="summary__last-month last-month__wrapper">
-          <p class="last-month__expenses"></p>
-          <h3 class="last-month__title">from last month</h3>
+        <div class="summary__last-month">
+          <p class="summary__last-month-value"></p>
+          <h3 class="summary__last-month-title">from last month</h3>
         </div>
       </div>
     </div>
