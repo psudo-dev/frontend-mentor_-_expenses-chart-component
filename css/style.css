@@ -165,7 +165,7 @@ ol {
 	font-size: clamp(1.25rem, 0.1389rem + 5.5556vw, 1.875rem);
 }
 
-.card-content__graphic {
+.card-content__chart {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	align-items: end;
@@ -174,7 +174,7 @@ ol {
 	height: 13.45rem;
 }
 
-.graphic__column {
+.chart__column {
 	display: flex;
 	flex-direction: column-reverse;
 	gap: 0.75rem;
@@ -182,24 +182,24 @@ ol {
 	height: 100%;
 }
 
-.graphic__day {
+.chart__day {
 	font-size: 0.75rem;
 	color: var(--brown-400);
 	align-self: center;
 }
 
-.graphic__amount {
+.chart__amount {
 	background: var(--red-500);
 	border-radius: 0.25rem;
 	position: relative;
 	transition: all 0.2s ease;
 }
 
-.graphic__amount:hover {
+.chart__amount:hover {
 	background: var(--red-500-hover);
 }
 
-.graphic__amount:hover::before {
+.chart__amount:hover::before {
 	content: attr(data-amount);
 	position: absolute;
 	padding: 0.5rem;
@@ -215,11 +215,11 @@ ol {
 	opacity: 1;
 }
 
-.graphic__amount--active {
+.chart__amount--active {
 	background: var(--blue-300);
 }
 
-.graphic__amount--active:hover {
+.chart__amount--active:hover {
 	background: var(--blue-300-hover);
 }
 

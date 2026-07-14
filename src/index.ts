@@ -22,6 +22,15 @@ interface MonthlySummary {
 
 const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
 type Weekday = (typeof weekdays)[number];
+const weekdaysFull: Record<Weekday, string> = {
+	mon: "Monday",
+	tue: "Tuesday",
+	wed: "Wednesday",
+	thu: "Thursday",
+	fri: "Friday",
+	sat: "Saturday",
+	sun: "Sunday",
+};
 
 async function fetchData<T>(
 	data: string,
@@ -92,37 +101,28 @@ function calcDiff(currMonth: number, lastMonth: number): string {
 
 const [weeklySummary, myBalance, monthlySummary] = await Promise.all([
 	fetchData("weeklySummary", isWeeklySummary),
-	fetchData("myBalance", isBalance),
+	fetchData("balance", isBalance),
 	fetchData("monthlySummary", isMonthlySummary),
 ]);
 const date = new Date();
-const weekdaysFull: Record<Weekday, string> = {
-	mon: "Monday",
-	tue: "Tuesday",
-	wed: "Wednesday",
-	thu: "Thursday",
-	fri: "Friday",
-	sat: "Saturday",
-	sun: "Sunday",
-};
 const today = weekdays[date.getDay()];
 
 if (weeklySummary !== null) {
 	const highestAmount = Math.max(...weeklySummary.map((item) => item.amount));
-	const wrapper = document.querySelector(".card-content__graphic");
+	const wrapper = document.querySelector(".card-content__chart");
 	const fragment = document.createDocumentFragment();
 	const template = document.createElement("template");
-	template.innerHTML = `<li class="graphic__column">
-	<p class="graphic__day" aria-hidden="true"></p>
-	<span class="graphic__amount" aria-hidden="true"></span>
+	template.innerHTML = `<li class="chart__column">
+	<p class="chart__day" aria-hidden="true"></p>
+	<span class="chart__amount" aria-hidden="true"></span>
 	<span class="sr-only"></span>
 </li>`;
 	if (wrapper instanceof HTMLElement) {
 		weeklySummary.forEach((daySummary) => {
 			const { day, amount } = daySummary;
 			const clone = template.content.cloneNode(true) as DocumentFragment;
-			const column = clone.querySelector(".graphic__amount");
-			const columnDay = clone.querySelector(".graphic__day");
+			const column = clone.querySelector(".chart__amount");
+			const columnDay = clone.querySelector(".chart__day");
 			const srOnly = clone.querySelector(".sr-only");
 			if (
 				column instanceof HTMLElement &&
@@ -135,7 +135,7 @@ if (weeklySummary !== null) {
 				column.dataset.amount = `$${amount.toFixed(2)}`;
 
 				if (day === today)
-					column.classList.add("graphic__amount--active");
+					column.classList.add("chart__amount--active");
 			}
 			fragment.appendChild(clone);
 		});
