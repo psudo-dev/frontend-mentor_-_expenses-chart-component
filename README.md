@@ -37,25 +37,38 @@ Your users should be able to:
 
 ## What I've Learned
 
-### 3D Card Flip Animation
+### Simulating a Real API
 
-Since this is a pretty simple project, I've decided to add a bit of interactivity to it, so I can try new things and learn from it. The main feature is that when the user submits the form, the rating card will flip and show the thanks card, with the rating that the user selected.
+The project only ships with a `data.json` file containing the last 7 days of spending, but the design also called for a balance card and a monthly summary with a percentage change from the previous month — neither of which can be derived from that single file.
 
-I initially made the animation using a mix of `setTimeout` and `translateY` with precise timing so the animation would look smooth and natural. But with a bit of research and help from AI, I found out that there was a more complicated but more performant way to do this animation, so I gave it a try. To be honest, I don't completely understood all the inner workings, but it was an fun experiment and this is a modern way to do 3D animations, so I'm glad I learned it.
+Rather than hardcoding those values, I created two additional JSON files (`balance.json` and `monthlySummary.json`) to simulate separate API endpoints, each representing a distinct domain (account balance, monthly aggregation) the way a real backend likely would split them.
 
-I also made in a way that when the user selects a rating, the numbers become filled with starts, which is a nice visual feedback for the user, and also makes it more clear which rating they have selected.
+This meant fetching from three endpoints instead of one, and calculating the month-over-month percentage change client-side from real data rather than displaying a static string.
+
+### DocumentFragment, <template>, and cloneNode()
+
+My first working version generated each chart column by setting an inline `style.height` on existing `<li>` elements inside a `forEach` loop. It worked, but after digging into optimization with the help of AI, I learned this approach causes unnecessary reflows: each style mutation on an element already in the live DOM can trigger the browser to recalculate layout, and doing that seven times in a row (once per column) is wasteful compared to batching the work.
+
+The fix involved three tools I hadn't used together before:
+
+- **`<template>`**: holds inert, reusable HTML that the browser parses but never renders or executes — perfect for a markup "mold" you intend to stamp out multiple times.
+- **`cloneNode(true)`**: creates a fresh, independent copy of that template's content on each iteration, avoiding the cost of re-parsing an HTML string from scratch every time.
+- **`DocumentFragment`**: a lightweight container that lives outside the rendered DOM tree, letting me assemble all seven columns in memory first, and insert them into the page in a single `appendChild` call — so the browser recalculates layout once, not seven times.
+
+I still don't fully grasp every nuance of the browser's rendering pipeline, but understanding _why_ batching DOM writes matters, and having a concrete pattern for doing it, was a genuinely useful addition to my toolkit.
 
 ### Accessibility and Semantic HTML
 
-To ensure proper validation, 100% of the visible content is wrapped inside appropriate HTML5 landmark elements, and the form structure uses proper semantic nodes for selection:
+The bar chart is visual by nature — a `<span>` with a computed height and a color doesn't mean anything to a screen reader on its own.
 
-- Form Structure: Wrapped the rating options within a and for native screen reader support.
-- Radio Inputs: Each rating option is implemented as a radio input, allowing users to select only one rating at a time, with clear labels for screen readers.
+To bridge that gap, each generated chart column pairs a visually-hidden `sr-only` element (containing something like `"Monday: $17.45"`) with `aria-hidden="true"` on the purely decorative day label and bar itself.
+
+This way, sighted users still see the bars and hover tooltips, while screen reader users get a clean, individually-navigable list of day/amount pairs — without needing `role="img"` or a single monolithic label that would collapse the whole chart into one unbreakable announcement.
 
 ### Architecture and Tooling
 
-- TypeScript: Adopted to enforce type safety, cleaner logic separation, and robust IDE autocompletion.
-- BEM (Block Element Modifier): Applied to build predictable and modular stylesheets.
+- **TypeScript**: used throughout, including generic functions and runtime type predicates (`value is X`) to validate the shape of data coming from each simulated endpoint before trusting it.
+- **BEM (Block Element Modifier)**: applied consistently across the stylesheet for predictable, modular class naming.
 
 ## Built With
 
