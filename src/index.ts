@@ -95,7 +95,7 @@ function calcColumnHeight(highest: number, value: number): string {
 
 function calcDiff(currMonth: number, lastMonth: number): string {
 	const calc = currMonth / lastMonth - 1;
-	if (calc > 1) return `+${(calc * 100).toFixed(2)}%`;
+	if (calc > 0) return `+${(calc * 100).toFixed(2)}%`;
 	else return `${(calc * 100).toFixed(2)}%`;
 }
 
