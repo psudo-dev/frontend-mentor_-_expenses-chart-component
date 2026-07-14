@@ -131,7 +131,10 @@ if (weeklySummary !== null) {
 			) {
 				columnDay.innerText = day;
 				srOnly.innerText = `${weekdaysFull[day]}: $${amount.toFixed(2)}`;
-				column.style.height = calcColumnHeight(highestAmount, amount);
+				column.style.setProperty(
+					"--bar-height",
+					calcColumnHeight(highestAmount, amount),
+				);
 				column.dataset.amount = `$${amount.toFixed(2)}`;
 
 				if (day === today)
