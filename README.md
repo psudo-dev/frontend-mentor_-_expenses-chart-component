@@ -2,11 +2,13 @@
 
 # Frontend Mentor - Expenses chart component
 
-[![Frontend Mentor](https://img.shields.io/badge/Frontend%20Mentor-Expenses%20Chart%20Component-2ec866?style=flat-square&logo=frontendmentor)](https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt)
+[![Frontend Mentor](https://img.shields.io/badge/Junior-Expenses%20Chart%20Component-2ec866?style=flat-square&logo=frontendmentor)](https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt)
 
 ## Overview
 
-I'm back to studying programming and I've started with the good old HTML and CSS, now I'm relearning JavaScript and TypeScript. After finishing the course I'm tackling some [Frontend Mentor](https://www.frontendmentor.io) challenges to put into practice everything I've learned as I continue my studies. It's also a great way to keep improving - while not forgetting everything I've learned - as I continue to learn new things.
+[Frontend Mentor](https://www.frontendmentor.io) is a great platform to keep studying and practicing front-end development, letting you focus on the code itself without worrying about design or UI. It offers a wide variety of projects, from challenges that only require HTML and CSS to full-stack builds, spanning multiple difficulty levels from newbie to advanced.
+
+This makes it easy to test out whatever you're currently studying — whether that's accessibility, Tailwind, TypeScript, or even React and Next.js — and you can make projects as complete and complex as you like, simulating APIs or databases along the way. It's a great playground to sharpen your skills, adaptable to whatever you need at the time.
 
 ### Live Demo
 
@@ -35,7 +37,7 @@ Your users should be able to:
 - See hover states for all interactive elements on the page
 - **Bonus**: See dynamically generated bars based on the data provided in the local JSON file
 
-## What I've Learned
+## Development Notes
 
 ### Simulating a Real API
 
