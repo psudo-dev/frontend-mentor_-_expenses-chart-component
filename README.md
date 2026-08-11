@@ -2,7 +2,7 @@
 
 # Frontend Mentor - Expenses chart component
 
-[![Frontend Mentor](https://img.shields.io/badge/Junior-Expenses%20Chart%20Component-2ec866?style=flat-square&logo=frontendmentor)](https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt)
+[![Frontend Mentor](https://img.shields.io/badge/Junior-Expenses%20Chart%20Component-2ec866?style=flat-square&logo=frontendmentor)](https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt) ![Semantic HTML](https://img.shields.io/badge/Semantic%20HTML-E34F26?style=flat-square&logo=html5&logoColor=white) ![Accessibility](https://img.shields.io/badge/Accessibility-E34F26?style=flat-square) ![Fluid CSS](https://img.shields.io/badge/Fluid%20CSS-1572B6?style=flat-square&logo=css&logoColor=white) ![BEM](https://img.shields.io/badge/BEM-1572B6?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) ![Bun](https://img.shields.io/badge/Bun-000000?style=flat-square&logo=bun&logoColor=white) ![Mock API](https://img.shields.io/badge/Mock%20API-F7BF25?style=flat-square)
 
 ## Overview
 
@@ -77,6 +77,7 @@ This way, sighted users still see the bars and hover tooltips, while screen read
 - Markup: HTML5, Semantic Elements
 - Styling: CSS3 (Grid, Flexbox, Fluid Spacing using clamp()), BEM Architecture
 - Logic & Tooling: TypeScript, Vite, Bun
+- Data Layer: Mock API
 
 ## Author
 
