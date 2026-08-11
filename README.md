@@ -75,7 +75,7 @@ This way, sighted users still see the bars and hover tooltips, while screen read
 ## Built With
 
 - Markup: HTML5, Semantic Elements
-- Styling: CSS3 (Grid, Flexbox, Fluid Spacing using clamp()), BEM Architecture
+- Styling: CSS3 (Grid, Flexbox, Fluid CSS using clamp()), BEM Architecture
 - Logic & Tooling: TypeScript, Vite, Bun
 - Data Layer: Mock API
 
